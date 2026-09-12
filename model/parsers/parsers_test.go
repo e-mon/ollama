@@ -67,6 +67,7 @@ func TestBuiltInParsersStillWork(t *testing.T) {
 		{"qwen3.5"},
 		{"ornith"},
 		{"harmony"},
+		{"llm-jp-4"},
 		{"nemotron-3-nano"},
 		{"nemotron-3.5-nano"},
 	}
@@ -89,6 +90,11 @@ func TestParserPreservedTokensCoverKnownLlamaServerRegressions(t *testing.T) {
 	}{
 		{
 			name:        "harmony",
+			want:        []string{"<|start|>", "<|message|>", "<|channel|>", "<|constrain|>"},
+			wantMissing: []string{"<|call|>"},
+		},
+		{
+			name:        "llm-jp-4",
 			want:        []string{"<|start|>", "<|message|>", "<|channel|>", "<|constrain|>"},
 			wantMissing: []string{"<|call|>"},
 		},
